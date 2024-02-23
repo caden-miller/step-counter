@@ -70,7 +70,7 @@ def find_minimums_maximums(derivative_acceleration):
 # Main loop
 num_steps = 0
 all_data_acceleration = []
-all_derivative_acceleration = []
+all_derivative_acceleration = [0]
 all_minimums = []
 all_minimum_times = []
 all_maximums = []
