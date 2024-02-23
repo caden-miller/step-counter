@@ -86,8 +86,15 @@ while True:
     if len(local_maximums) > 0:
         num_steps += 1
         print("Number of steps: ", num_steps)
-    plt.plot(data_time, all_data_acceleration, 'r--', data_time, all_derivative_acceleration, 'b--', all_minimum_times, all_minimums, 'go', all_maximum_times, all_maximums, 'bo')
-    plt
+    print("plotting acceleration")
+    plt.plot(data_time, all_data_acceleration, 'r--')
+    print("plotting acceleration derivative")
+    plt.plot(data_time, all_derivative_acceleration, 'b--')
+    print("plotting minimums")
+    plt.plot(all_minimum_times, all_minimums, 'go')
+    print("plotting maximums")
+    plt.plot(all_maximum_times, all_maximums, 'bo')
+    plt.show()
     data_acceleration = []
     derivative_acceleration = []
     local_minimums = []
