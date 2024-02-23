@@ -32,8 +32,8 @@ def read_acceleration(num_points, t):
         x_acceleration = 0
         y_acceleration = 0
         z_acceleration = 0
-        x_acceleration, y_acceleration, z_acceleration = mpu.acceleration
-        acceleration = math.sqrt(x_acceleration ** 2 + y_acceleration ** 2 + z_acceleration ** 2) - 9.81
+        x_acceleration, y_acceleration = mpu.gyroscope
+        acceleration = math.sqrt(x_acceleration ** 2 + y_acceleration ** 2) - 9.81
         data_acceleration.append(acceleration)
         data_time.append(t)
         time.sleep(period)
