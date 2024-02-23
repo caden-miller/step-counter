@@ -79,12 +79,12 @@ all_maximum_times = []
 while True:
     num_points = 100
     read_acceleration(num_points, t)
-    all_data_acceleration.append(data_acceleration)
+    all_data_acceleration.extend(data_acceleration)
     derivative_acceleration = calculate_derivative(data_acceleration)
-    all_derivative_acceleration.append(derivative_acceleration)
+    all_derivative_acceleration.extend(derivative_acceleration)
     local_minimums, local_maximums, all_minimum_times, all_maximum_times = find_minimums_maximums(derivative_acceleration)
-    all_minimums.append(local_minimums)
-    all_maximums.append(local_maximums)
+    all_minimums.extend(local_minimums)
+    all_maximums.extend(local_maximums)
     # print local minimums and maximums
     #print("Local minimums: ", local_minimums)
     #print("Local maximums: ", local_maximums)
