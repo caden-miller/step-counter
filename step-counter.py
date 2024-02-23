@@ -86,8 +86,8 @@ while True:
     all_minimums.append(local_minimums)
     all_maximums.append(local_maximums)
     # print local minimums and maximums
-    print("Local minimums: ", local_minimums)
-    print("Local maximums: ", local_maximums)
+    #print("Local minimums: ", local_minimums)
+    #print("Local maximums: ", local_maximums)
     if len(local_minimums) > 0:
         num_steps += 1
         print("Number of steps: ", num_steps)
@@ -95,12 +95,20 @@ while True:
         num_steps += 1
         print("Number of steps: ", num_steps)
     print("plotting acceleration")
+    print("data_time: ", data_time)
+    print("all_data_acceleration: ", all_data_acceleration)
     plt.plot(data_time, all_data_acceleration, 'r--')
     print("plotting acceleration derivative")
+    print("data_time: ", data_time)
+    print("all_derivative_acceleration: ", all_derivative_acceleration)
     plt.plot(data_time, all_derivative_acceleration, 'b--')
     print("plotting minimums")
+    print("all_minimum_times: ", all_minimum_times)
+    print("all_minimums: ", all_minimums)
     plt.plot(all_minimum_times, all_minimums, 'go')
     print("plotting maximums")
+    print("all_maximum_times: ", all_maximum_times)
+    print("all_maximums: ", all_maximums)
     plt.plot(all_maximum_times, all_maximums, 'bo')
     plt.show()
     data_acceleration = []
