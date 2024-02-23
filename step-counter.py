@@ -19,21 +19,29 @@ t = 0
 frequency = 1000
 period = 1 / frequency
 
+
+
+
 def read_acceleration(num_points, t):
+    # Create a mask to filter the data
+    w = 10
+    mask=np.ones((1,w))/w
+    mask=mask[0,:]
     while True:
         # Read acceleration
         x_acceleration = 0
         y_acceleration = 0
         z_acceleration = 0
         x_acceleration, y_acceleration, z_acceleration = mpu.acceleration
-        acceleration = math.sqrt(x_acceleration ** 2 + y_acceleration ** 2 + z_acceleration ** 2)
+        acceleration = math.sqrt(x_acceleration ** 2 + y_acceleration ** 2 + z_acceleration ** 2) - 9.81
         data_acceleration.append(acceleration)
         data_time.append(t)
         time.sleep(period)
         t += period
         if len(data_acceleration) == num_points:
             break
-    return data_acceleration, data_time
+    convolved_data=np.convolve(data_acceleration,mask,'same')
+    return convolved_data, data_time
 
 # Create list to store the derivative of the acceleration
 derivative_acceleration = []
