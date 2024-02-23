@@ -48,7 +48,11 @@ derivative_acceleration = []
 
 def calculate_derivative(data_acceleration):
     derivative_acceleration = np.diff(data_acceleration) / period
-    return derivative_acceleration
+    w = 10
+    mask=np.ones((1,w))/w
+    mask=mask[0,:]
+    convolved_data=np.convolve(derivative_acceleration,mask,'same')
+    return convolved_data
 
 # Find minimums and maximums
 local_minimums = []
