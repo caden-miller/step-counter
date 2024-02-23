@@ -19,11 +19,14 @@ t = 0
 frequency = 1000
 period = 1 / frequency
 
-def read_acceleration(num_points):
+def read_acceleration(num_points, t):
     while True:
         # Read acceleration
-        
-        acceleration = mpu.acceleration
+        x_acceleration = 0
+        y_acceleration = 0
+        z_acceleration = 0
+        x_acceleration, y_acceleration, z_acceleration = mpu.acceleration
+        acceleration = math.sqrt(x_acceleration ** 2 + y_acceleration ** 2 + z_acceleration ** 2)
         data_acceleration.append(acceleration)
         data_time.append(t)
         time.sleep(period)
@@ -67,7 +70,7 @@ all_maximum_times = []
 
 while True:
     num_points = 100
-    read_acceleration(num_points)
+    read_acceleration(num_points, t)
     all_data_acceleration.append(data_acceleration)
     derivative_acceleration = calculate_derivative(data_acceleration)
     all_derivative_acceleration.append(derivative_acceleration)
